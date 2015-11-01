@@ -1,0 +1,57 @@
+
+package hinterwaldgstetten;
+
+import java.util.ArrayList;
+
+/**
+ * Class Trees is the representation of all the Trees in the Forest. It takes in
+ * (=is a superclass of) Tree and Harvest. 
+ * It computes following parameters:
+ * @treeTypes: The amount of types of trees
+ * @avgWeight: The average weight of all the trees (which correlates with CO2 
+ * and age)
+ * @avgResistance: How healthy the trees are
+ * @specResistance: In case of special incidents, how likely is this group of
+ * trees to survive?
+ * @maxWeight: How far is this group of trees removed from its maximal Weight
+ * @avgRotting: The trees that are already dead generate CO2. How much?
+ * @avgComp: How compatible is this group of trees on average. Can i introduce
+ * some trees to make it more compatible?
+ * 
+ * @author Shahin Gharapet
+ */
+public class Trees {
+	
+	public ArrayList<Tree> cTree;
+    
+	public void createTrees (int iOak, int iPin, int iEuc)
+	{
+    	// fill array of tree
+		
+     	// Oaks
+    	for(int i = 0; i < iOak; ++i) 
+    	{
+    	   	cTree.add(new TreeOak()); 
+    	}
+    	// Pins
+    	for(int i = 0; i < iPin; ++i) 
+    	{
+    	   	cTree.add(new TreePin()); 
+    	}
+       	// Eucalypt
+    	for(int i = 0; i < iEuc; ++i) 
+    	{
+    	   	cTree.add(new TreeEuc()); 
+    	}
+    }
+    
+    public double avgWeight(){
+    	double avgValue = 0.0;
+    	// Get info from all trees
+    	for (int i = 0; i < cTree.size(); ++i)
+    	{
+    		avgValue = avgValue + cTree.get(i).maxWeight();
+    	}
+    	return(avgValue / cTree.size());
+    }
+}
