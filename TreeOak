@@ -1,0 +1,11 @@
+package hinterwaldgstetten;
+
+public class TreeOak extends Tree
+{
+	@Override
+	public double maxWeight() {
+		 return(3.2);
+	}
+	@Override
+	public int getTreeType() {return (1);}
+}
