@@ -1,0 +1,175 @@
+
+package hinterwaldgstetten;
+
+/**
+ * Class Tree is the defining class for the individual tree.
+ * It takes in the type of the tree (e.g. evergreen)
+ * and returns the following:
+ * @resProb: the probability of this tree to survive (=resist) the year.
+ * Correlates with the @compFactor and maxWeight (some trees are more robust
+ * when big, others are less)
+ * @specRes: This trees resistance to special incidents, e.g.
+ * Fire, Insects, Bugs, Animals, Birds, Tourists, Climate changes.
+ * @maxWeight: the maximum this tree can grow
+ * @avgWeightGain: a function of how fast this tree grows, obv. dependent on
+ * how much weight it already has
+ * Both weight functions are decided by CO2 intake. We assume that a tree that 
+ * grows takes in CO2 and a tree that does not grow takes no CO2 anymore. The 
+ * trees weight is directly correlated with the amount of saved CO2
+ * It also correlates with the @compFactor, because some trees like to grow
+ * faster with other trees, some like this not at all 
+ * @avgRotting: How fast this tree rots (gets converted into CO2) if it is dead.
+ * @compFactor: How compatible this tree is if you plant other trees nearby,
+ * this can raise different for the tree type if you go into its space. At
+ * the base it is 0 (we assume that you cannot plant a tree on a tree)
+ * @baseValue: The normal accounting value, i.e. the basic investment into this tree.
+ * @areaSpace: How much space this tree needs without going into its compFactor.
+ * 
+ * @author Heinrich Schuetz (e7825203)
+ */
+public class Tree {
+
+	 // supported treetypes
+	 // 1 ... oak
+	 // 2 ... pine
+	 // 3 ... eucalypt
+	 //
+	 public int treetype;
+	 
+	 //--------------------------------------------------------------
+	 //
+	 // BAD: Definition of TreeType via int is not good
+	 //     Alternative: Definition of subclasses of tree (each treetype is a class)
+	 //		The move to the subclases should be done for the most of the methods in this class
+	 //		Treetype-specific behavior must be part of the subclasses
+	 // 	All relevant methods are marked with: "BAD: *)"
+	 //		
+	 //--------------------------------------------------------------
+	 public boolean setTreeType (int settype){
+		 /* check supported treetypes */
+		 if (settype > 0 && settype < 4)
+		 {
+			 treetype = settype;
+			 return true;
+		 }
+		 else
+		 {
+			 treetype = 0;
+			 return false;
+		 }
+	 }
+
+	 //--------------------------------------------------------------
+	 //
+	 // 	BAD: *)
+	 //		
+	 //--------------------------------------------------------------
+	 public int getTreeType() {return treetype;}
+	 
+	 //--------------------------------------------------------------
+	 //
+	 // 	BAD: *)
+	 //		
+	 //--------------------------------------------------------------
+	 public double resProb() {
+	     // value is factor for a homogeneous forest
+		 return (0.95);
+	 }
+	 
+	 //--------------------------------------------------------------
+	 //
+	 // 	BAD: *)
+	 //		
+	 //--------------------------------------------------------------
+	 public double specRes (int incident){
+		 // Fire, Insects, Bugs, Animals, Tourists, Climate changes
+		 double ifactor;
+	     switch (incident) {
+              case 1: ifactor = 0.02; /* fire */
+                     break;
+              case 2: ifactor = 0.99; /* insects */
+                     break;
+              case 3: ifactor = 0.90; /* bugs */
+                     break;
+              case 4: ifactor = 0.80; /* animals */
+                     break;
+              case 5: ifactor = 0.95; /* tourists */
+                     break;
+              case 6: ifactor = 0.80; /* climate changes */
+                     break;
+              default: ifactor = 1.0; /* no influence */
+                     break;
+	     }
+		 return (ifactor);
+     }
+	 
+	 //--------------------------------------------------------------
+	 //
+	 // 	BAD: *)
+	 //		
+	 //--------------------------------------------------------------
+	 public double maxWeight() {
+		 // value in tons 
+		 double weight;
+		 switch (treetype) {
+		 case 1: weight = 2.75;
+		 		break;
+		 case 2: weight = 3.2;
+		 		break;
+		 default: weight = 1.00;
+		 		break;
+		 }
+		 return (weight);
+	 }
+	 
+	 //--------------------------------------------------------------
+	 //
+	 // 	BAD: *)
+	 //		
+	 //--------------------------------------------------------------
+	 public double avgWeightGain (double weigth){
+		 // first assumption: linear growth, 
+		 // better algorithm may be developed based on the current weigth and compFactor
+		 // return value is factor of growing 
+		 return (1.05);
+	 }
+	 
+	 //--------------------------------------------------------------
+	 //
+	 // 	BAD: *)
+	 //		
+	 //--------------------------------------------------------------
+	 public double avgRotting(){
+		 return (0.10);
+	 }
+	 
+	 //--------------------------------------------------------------
+	 //
+	 // 	GOOD: This method is well positioned
+	 //		
+	 //--------------------------------------------------------------
+	 public double compFactor (double mixture){
+		 // algorithm has to be developed, first assumption: more mixture, better forest
+		 return ((1 - resProb()) * mixture);
+	 }
+
+	 //--------------------------------------------------------------
+	 //
+	 // 	BAD: *)
+	 //		
+	 //--------------------------------------------------------------
+	 public double baseValue(){
+		// value in EURO
+		 return (17.20);
+	 }
+	 
+	 //--------------------------------------------------------------
+	 //
+	 // 	BAD: *)
+	 //		
+	 //--------------------------------------------------------------
+	 public double areaSpace(){
+		 // value in squaremeters
+		 return (2.5);
+	 }    
+}
