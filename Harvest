@@ -1,0 +1,55 @@
+package hinterwaldgstetten;
+
+/**
+ * Class Harvest takes in a tree and decides how much money you can make.
+ * It takes a tree (from class Tree)
+ * Alive: If the tree is alive you can compute the following
+ * Parameters are:
+ * @harvestFactor: How much of this tree can be used at all. Can you cut it
+ * very close to the bottom, can you use its roots, can you use all the branches
+ * @restFactor: How long will you need to give this tree rest after cutting, 
+ * before you can use it for further exploitation
+ * @sellValue: The gain of money if you sell this tree for use of its wood.
+ * @burnValue: The gain of money if you sell this tree for use as energy source.
+ * Both values have to be compared with the trees baseValue, by subtracting the
+ * baseValue from them (ROI)
+ * 
+ * Dead: If the tree is dead you can compute the following:
+ * @avgRotting: How much CO2 will go into the atmosphere over time.
+ * 
+ * @author Heinrich Schuetz (e7825203)
+ */
+public class Harvest {
+
+	//--------------------------------------------------------------
+	//
+	// BAD: All methods should be part of class tree (or subclasses)
+	// 		
+	//--------------------------------------------------------------
+	public double harvestFactor(){
+		// assumption: 80%
+		return (0.8);
+	}
+	
+	public int restFactor (int treetype){
+		// number of the years
+		return (10);
+	}
+
+	public double sellValue (int treetype){
+		// Value in EURO 
+		return (314.50);
+	}
+
+	public double burnValue (int treetype){
+		// Value in EURO 
+		return (127.99);
+	}
+	
+	public double avgRotting (int treetype){
+		// Value in tons 
+		return (0.2);
+	}
+
+	
+}
