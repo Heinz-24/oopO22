@@ -1,0 +1,12 @@
+package hinterwaldgstetten;
+
+public class TreePin extends Tree
+{
+	@Override
+	public double maxWeight()
+	{
+		return(2.75);
+	}
+	@Override
+	public int getTreeType() {return (2);}
+}
