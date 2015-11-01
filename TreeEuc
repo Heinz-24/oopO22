@@ -1,0 +1,11 @@
+package hinterwaldgstetten;
+
+public class TreeEuc extends Tree
+{
+	@Override
+	public double maxWeight() {
+		 return(5.4);
+	}
+	@Override
+	public int getTreeType() {return (3);}
+}
