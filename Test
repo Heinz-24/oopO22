@@ -1,0 +1,47 @@
+package hinterwaldgstetten;
+
+/**
+ * Class Test is the simulated user input. We test with different forest sizes,
+ * different tree types and give back the respective pros and cons 
+ * 
+ * It uses a fixed fantasy user input to test the Forest class.
+ * All values of Forest will be called and outputted to the tester.
+ * Input:
+ * --> stdIn, with the call to forest
+ * <-- stdOut, with the values as a print to the user.
+ * @author andreasmerckel 
+ */
+
+public class Test {        
+	
+	public static void main( String [] args )
+	   {
+	       Forest forest = new Forest(1) ;
+	       System.out.println("Anzahl der Bäume         " + forest.getTrees());
+	   /*    System.out.println("Zusammensetzung          " + forest.getValue());
+	       System.out.println("Wieviel Tote             " + forest.getRotting());
+	       System.out.println("Robustheit               " + forest.getRotting());
+	       System.out.println("Wachstum                 " + forest.getRotting());
+	       System.out.println("Wieviel bis max          " + forest.getCO2());
+	       System.out.println("Sofortverkauf            " + forest.getResistance());
+	       System.out.println("jrl. Verkauf mit Zukunft " + forest.getRotting());
+	       System.out.println("jrl. ohne Zukunft        " + forest.getRotting());
+	       System.out.println("Buchwert                 " + forest.getRotting()); */
+	       }
+	}
+    
+    /**
+     * @param args the command line arguments
+     */
+//        public static void main(String[] args) {
+////        Test test = new Test();
+//        System.out.println("Die benötigten Anfangswerte sind \n"
+//                + "Anfangsholz                  in m3    100 \n"
+//                + "Holzzuwachs                  in m3     10 \n"
+//                + "Erntemenge                   in m3      5 \n"
+//                + "Anfall an Totholz            in m3      8 \n"
+//                + "durchschn. endg. Verwertung  in %      10 \n"
+//                + "durchschn. proz. Verrottung  in %      10 \n"
+//                );
+////        test.test(100, 10, 5, 8, 10, 10);
+//   
