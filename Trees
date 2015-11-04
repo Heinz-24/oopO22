@@ -1,57 +1,71 @@
 
 package hinterwaldgstetten;
 
-import java.util.ArrayList;
+// import java.util.ArrayList;
 
 /**
- * Class Trees is the representation of all the Trees in the Forest. It takes in
- * (=is a superclass of) Tree and Harvest. 
+ * Class Trees is the representation of all the Trees in the Forest. 
  * It computes following parameters:
- * @treeTypes: The amount of types of trees
- * @avgWeight: The average weight of all the trees (which correlates with CO2 
- * and age)
- * @avgResistance: How healthy the trees are
- * @specResistance: In case of special incidents, how likely is this group of
- * trees to survive?
- * @maxWeight: How far is this group of trees removed from its maximal Weight
- * @avgRotting: The trees that are already dead generate CO2. How much?
- * @avgComp: How compatible is this group of trees on average. Can i introduce
- * some trees to make it more compatible?
- * 
+ * @numberOfType1Trees,numberOfType2Trees,numberOfType3Trees: The amount of each tree type
+ * @AverageWeightOfType1Trees: The average weight of a specific tree type
+ * @AverageWeightOfType1Trees: average weight of all tree types
+ * @NumberOfType1Pests: density of pests per M2
+ * @type1TreesAverageProximityValue: That shows how close the trees of a definite tree type are .this factor also shows compatibility of each tree type
+ * @sunlightSufficiencyPerYear: Shows the sufficiency level of sunlight during a year
+ * @precipitationSufficiencyPerYear:shows sufficiency level of precipitation through a year(4 seasons in general)
+ * @generatedCO2ByDeadType1Trees: amount of generated CO2 by dead trees of a definite type
  * @author Shahin Gharapet
  */
-public class Trees {
+
+ // BAD: During writing this code i decided first to build it by extending the Tree class. but later i figured out that it's not a good approach and
+ // it's better to include a member variable of the Tree class inside the Trees class so that i can instantiate several trees with specific
+ // properties(age,type,...). Thus in later version i do not use the extension and use a member variable of type Tree instead!
+
+public class Trees extends Tree{
+	public int numberOfType1Trees,numberOfType2Trees,numberOfType3Trees,numberOfTrees;
+	public double AverageWeightOfType1Trees,AverageWeightOfType2Tree,sAverageWeightOfType3Treess, AverageWeightOfAllTrees;
+	public int NumberOfType1Pests;
+	public int pestPerm3;	
+	public double type1TreesAverageProximityValue, type2TreesAverageProximityValue, type3TreesAverageProximityValue;
+	public double sunlightSufficiencyPerYear;
+	public double precipitationSufficiencyPerYear;
+	public double generatedCO2ByDeadType1Trees,generatedCO2ByDeadType2Trees,generatedCO2ByDeadType3Trees;
+	public Object[] treeArray;
 	
-	public ArrayList<Tree> cTree;
-    
-	public void createTrees (int iOak, int iPin, int iEuc)
+	public void TreesInit()
 	{
-    	// fill array of tree
-		
-     	// Oaks
-    	for(int i = 0; i < iOak; ++i) 
-    	{
-    	   	cTree.add(new TreeOak()); 
-    	}
-    	// Pins
-    	for(int i = 0; i < iPin; ++i) 
-    	{
-    	   	cTree.add(new TreePin()); 
-    	}
-       	// Eucalypt
-    	for(int i = 0; i < iEuc; ++i) 
-    	{
-    	   	cTree.add(new TreeEuc()); 
-    	}
-    }
-    
-    public double avgWeight(){
-    	double avgValue = 0.0;
-    	// Get info from all trees
-    	for (int i = 0; i < cTree.size(); ++i)
-    	{
-    		avgValue = avgValue + cTree.get(i).maxWeight();
-    	}
-    	return(avgValue / cTree.size());
-    }
+		//
+		numberOfTrees = 4;
+		this.NumberOfType1Pests = 10;
+		this.type1TreesAverageProximityValue = 100;
+		this.type2TreesAverageProximityValue = 100;		
+		this.type3TreesAverageProximityValue = 100;		
+		this.sunlightSufficiencyPerYear = 80;
+		this.precipitationSufficiencyPerYear = 60;		
+//		Tree[] treeArray = new Tree[100];  // new stands for create an array object
+//		treeArray[0] = new Tree(1,10,3);			
+	}
+	//BAD:This function computes the average of all type of trees
+	//but recently i came to conclusion to use Arraylist inside my code and have an array of objects(trees in my code).
+	public int averageWeighOfAlltrees(Object k,int i )
+	{
+		int a = 0;
+		for(i = 0 ; i < 4 ;i++)
+			a = a + i;
+		return a;
+	}
+	//BAD: As this part needed more interaction with colleagues i did not write the formula to calculate this part. in newer version i come up with
+	//better ideas.
+	public int generatedCO2ByDeadTrees()
+	{	
+		return (0);
+	}
 }
+
+
+
+
+
+
+
+
