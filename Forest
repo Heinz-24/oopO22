@@ -1,0 +1,41 @@
+
+package hinterwaldgstetten;
+
+/**
+ * Class Forest is a representation of all the entities in the Forest.
+ * It is the superclass of Classes Trees and Accounting
+ * It takes in the Input from the User and gives back the required values.
+ * 
+ * @forestTrees: So far, we have only implemented Trees into our Forest, so we
+ * can only provide Feedback for those
+ * 
+ * @author Andreas Merckel
+ * 
+ * Forest uses the subclass Trees to calculate the trees. For this, we call
+ * Trees with the required values (e.g. new Trees(mixed, 100) and should receive
+ * the age, value and resistance as Integers resp.
+ * Forest also calls the class Accounting to calculate the absolute value of
+ * the Trees.
+ * 
+ * I am not overly sure if Accounting has to be its own class or should be 
+ * implemented as a method
+ */
+public class Forest {
+	public Trees forestTrees;
+	
+	public Forest(int noTrees) {
+		
+	}
+	
+	public void setTrees(int amount) {
+		forestTrees = new Trees();
+	}
+	public Trees getTrees() {
+		return forestTrees;
+	}
+	
+	public void getValue() {
+		
+	}
+    
+}
