@@ -1,0 +1,63 @@
+
+
+package hinterwaldgstetten;
+
+/**
+ * Class Accounting is the value class for the forest with basic 
+ * accounting projections.
+ * So far the following ideas are planned:
+ * @maxValueNow: If we sell off everything today, what will be the maximum gain
+ * @maxValueAvg: If we sell off stuff with the future in mind (total equilibrium)
+ * how much will we gain
+ * @maxValueNoGrow: How much can we sell per year for a given period of years until
+ * the Forest is gone
+ * @maxValueYesGrow: How much can we sell of per year with the given intent of 
+ * growing the forest into a given size
+ * @accValue: How much did we invest (What is the base Value of the Forest)
+ * 
+ * Accounting so far is a Class that uses the collectibles in Forest (e.g. 
+ * Class Trees) and calculates their accounting value.
+ * Value will be returned as a number
+ * The Idea to make it its own class and not just a method in Forest was to
+ * keep the Forest class as its own Superclass, with no direct access to
+ * Accounting in a method. Maybe overkill
+ * 
+ * @author Andreas Merckel
+ */
+public class Accounting //extends Forest
+{
+	public int maxValueNow;
+	public int maxValueAvg;
+	public int maxValueNoGrow;
+	public int maxValueYesGrow;
+	public int accValue;
+	
+	public Accounting (int noTrees) {
+		// super(noTrees);
+		// TODO Auto-generated constructor stub
+	}
+
+	public void maxValueNow() {
+		int amount = 0;
+		for(int i = 0; i <= 4; i++) {
+			amount = amount + Trees.averageWeighOfAlltrees();
+		}
+	}
+	
+	public void maxValueAvg() {
+		
+	}
+	
+	public void maxValueNoGrow() {
+		
+	}
+	
+	public void maxValueYesGrow() {
+		
+	}
+	
+	public void accValue() {
+		
+	}
+    
+}
